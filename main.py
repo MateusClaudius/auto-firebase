@@ -14,6 +14,7 @@ class Funcoes:
 
     def finalizar():
         exit()
+        window.destroy()
     
     def caminho1():
         global entrada
