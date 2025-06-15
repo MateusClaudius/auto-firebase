@@ -23,12 +23,14 @@ class Funcoes:
     
     def caminho2():
         global saida
+
         saida = filedialog.askdirectory()
         print(saida)
     
     def converter():
        global entrada
        global saida
+
        print(entrada, saida)
        for arquivo in os.listdir(entrada):
             if 'json' in arquivo:
