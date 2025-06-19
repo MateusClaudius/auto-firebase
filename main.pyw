@@ -30,12 +30,13 @@ class Funcoes:
        global entrada
        global saida
 
+       os.startfile(saida)
+       window.destroy()
+
        print(entrada, saida)
        for arquivo in os.listdir(entrada):
             if 'json' in arquivo:
                 os.rename(f'{entrada}\\{arquivo}', f'{saida}\\{arquivo[:13].title() + '.json'}')
-    os.startfile(saida)
-    window.destroy()
 
 class Janela(Funcoes):
     def __init__(self):
