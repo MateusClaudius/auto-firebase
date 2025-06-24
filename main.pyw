@@ -45,7 +45,6 @@ class Janela(Funcoes):
         window.mainloop()
     
     def tela(self):
-        self.tela = window
         window.title('Automação FireBase')
         window.configure(background=cores['cinza'])
         window.geometry('720x252')
