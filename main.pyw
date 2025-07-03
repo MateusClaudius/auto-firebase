@@ -52,13 +52,13 @@ class Janela(Funcoes):
     
     def botoes(self):
         self.label = Label(window, text='Selecione a pasta onde os arquivos .json estão:', bg=cores['cinza'], fg='white', font=('Arial', 11, 'bold'))
-        self.label.place(relx=0.05, rely=0.19)
+        self.label.place(relx=0.05, rely=0.20)
 
         self.selecionar_1 = Button(window, text='Selecionar Pasta', command=lambda: Funcoes.caminho(file='E'), bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))
         self.selecionar_1.place(relx=0.75, rely=0.18)
 
         self.label = Label(window, text='Selecione a pasta onde os arquivos .json estarão após a conversão:', bg=cores['cinza'], fg='white', font=('Arial', 11, 'bold'))
-        self.label.place(relx=0.05, rely=0.41)
+        self.label.place(relx=0.05, rely=0.42)
 
         self.selecionar_2 = Button(window, text='Selecionar Pasta', command=lambda: Funcoes.caminho(file='S'), bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))
         self.selecionar_2.place(relx=0.75, rely=0.4)
