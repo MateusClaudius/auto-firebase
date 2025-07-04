@@ -44,9 +44,12 @@ class Funcoes:
         
         salvar()
     
-    def deletar():
+    def apagar():
         global saida
 
+        os.startfile(saida)
+
+        print(saida)
         for arquivo in os.listdir(saida):
             if 'json' in arquivo:
                 caminho_completo = os.path.join(saida, arquivo)
@@ -56,7 +59,7 @@ class Funcoes:
        global entrada, saida
 
        os.startfile(saida)
-       window.destroy()
+       #window.destroy()
 
        print(entrada, saida)
        for arquivo in os.listdir(entrada):
@@ -92,10 +95,10 @@ class Janela(Funcoes):
         self.iniciar = Button(window, text='Iniciar conversão', command=Funcoes.converter, bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))
         self.iniciar.place(relx=0.05, rely=0.6)
 
-        self.fechar = Button(window, text='Deletar arquivos', command=Funcoes.deletar, bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))
-        self.fechar.place(relx=0.24, rely=0.6)
+        self.deletar = Button(window, text='Deletar arquivos', command=Funcoes.apagar, bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))
+        self.deletar.place(relx=0.24, rely=0.6)
 
-        self.deletar = Button(window, text='Fechar programa', command=Funcoes.finalizar, bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))
-        self.deletar.place(relx=0.43, rely=0.6)
+        self.fechar = Button(window, text='Fechar programa', command=Funcoes.finalizar, bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))
+        self.fechar.place(relx=0.423, rely=0.6)
 
 Janela()
