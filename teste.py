@@ -1,10 +1,8 @@
 import csv
 
 with open('path.csv', 'r', newline='', encoding='utf-8') as arquivo:
-    
-    leitor = csv.reader(arquivo)
 
-    print(list(leitor)[0])
+    leitor = csv.reader(arquivo, delimiter=';')
 
-    for linha in leitor:
-        print(linha)
+    for indice, linha in enumerate(leitor):
+        print(indice + 1, linha)
