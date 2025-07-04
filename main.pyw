@@ -48,6 +48,7 @@ class Funcoes:
         global saida
 
         os.startfile(saida)
+        window.destroy()
 
         print(saida)
         for arquivo in os.listdir(saida):
@@ -59,7 +60,7 @@ class Funcoes:
        global entrada, saida
 
        os.startfile(saida)
-       #window.destroy()
+       window.destroy()
 
        print(entrada, saida)
        for arquivo in os.listdir(entrada):
