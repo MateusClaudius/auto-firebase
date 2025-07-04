@@ -73,10 +73,10 @@ class Janela(Funcoes):
         self.iniciar = Button(window, text='Iniciar conversão', command=Funcoes.converter, bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))
         self.iniciar.place(relx=0.05, rely=0.6)
 
-        self.fechar = Button(window, text='Fechar programa', command=Funcoes.finalizar, bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))
+        self.fechar = Button(window, text='Deletar arquivos', command=Funcoes.deletar, bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))
         self.fechar.place(relx=0.24, rely=0.6)
 
-        self.deletar = Button(window, text='Deletar arquivos', command=Funcoes.deletar, bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))
+        self.deletar = Button(window, text='Fechar programa', command=Funcoes.finalizar, bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))
         self.deletar.place(relx=0.43, rely=0.6)
 
 Janela()
