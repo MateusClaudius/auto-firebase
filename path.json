@@ -1,0 +1,12 @@
+{
+    "jogadores": [
+        {
+            "nome": "Stephen Curry",
+            "time": "Golden State Warriors"
+        },
+        {
+            "nome": "Lebron James",
+            "time": "Los Angeles Lakers"
+        }
+    ]
+}

@@ -16,8 +16,7 @@ class Funcoes:
         exit()
     
     def caminho(file):
-        global entrada
-        global saida
+        global entrada, saida
 
         if file == 'E':
             entrada = filedialog.askdirectory()
@@ -29,13 +28,17 @@ class Funcoes:
     def deletar():
         global saida
 
-        for arquivo in os.listdir(saida):
-            caminho_completo = os.path.join(saida, arquivo)
-            os.remove(caminho_completo)
+        try:
+
+            for arquivo in os.listdir(saida):
+                if 'json' in arquivo:
+                    caminho_completo = os.path.join(saida, arquivo)
+                    os.remove(caminho_completo)
+        except FileNotFoundError:
+            pass
     
     def converter():
-       global entrada
-       global saida
+       global entrada, saida
 
        os.startfile(saida)
        window.destroy()
