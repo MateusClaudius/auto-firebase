@@ -3,7 +3,7 @@ import csv
 path_lista = [
     ['entrada', 'saida'],
     ['c:\\Users\\mateus.santos_acesso\\Downloads', 'c:\\Users\\mateus.santos_acesso\\Documents\\firebase'],
-    ['c:\\Users\\mateus.santos_acesso\\Downloads', 'c:\\Users\\mateus.santos_acesso\\Documents\\firebase']
+    ['teste', 'c:\\Users\\mateus.santos_acesso\\Documents\\firebase']
 ]
 
 with open('teste.csv', 'w', newline='', encoding='utf-8') as aquivo:

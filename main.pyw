@@ -1,14 +1,38 @@
 import os
+import csv
 from tkinter import *
 from tkinter import filedialog
 
 window = Tk()
 entrada = saida = ''
 
+path_lista = [
+    ['path1'],
+    ['path2']
+]
+
 cores = {
     'cinza': '#1e1e1e',
     'laranja': '#ffa000'
     }
+
+with open('path.txt', 'w', newline='', encoding='utf-8') as arquivo:
+    
+    escritor = csv.writer(arquivo, delimiter=(';'))
+
+    for linha in path_lista:
+        escritor.writerow(linha)
+
+with open('path.txt', 'r', encoding='utf-8') as arquivo:
+
+    leitor = csv.reader(arquivo, delimiter=';')
+
+    print(list(leitor)[0])
+
+    entrada = list(leitor)[0][0]
+    saida = list(leitor)[1][0]
+
+    print(entrada, saida)
 
 class Funcoes:
 
