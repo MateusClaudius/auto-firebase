@@ -6,9 +6,9 @@ path_lista = [
     ['c:\\Users\\mateus.santos_acesso\\Downloads', 'c:\\Users\\mateus.santos_acesso\\Documents\\firebase']
 ]
 
-'''with open('teste.csv', 'w', newline='', encoding='utf-8') as aquivo:
+with open('teste.csv', 'w', newline='', encoding='utf-8') as aquivo:
     for linha in path_lista:
-        aquivo.write(str(linha) + '\n')'''
+        aquivo.write(str(linha) + '\n')
 
 with open('teste2.csv', 'w', newline='', encoding='utf-8') as arquivo:
 
