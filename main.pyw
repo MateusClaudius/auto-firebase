@@ -1,14 +1,31 @@
 import os
+import json
 from tkinter import *
 from tkinter import filedialog
 
 window = Tk()
 entrada = saida = ''
+config_path = 'config.json'
 
 cores = {
     'cinza': '#1e1e1e',
     'laranja': '#ffa000'
     }
+
+def carregar():
+        global entrada, saida
+
+        if os.path.exists(config_path):
+            with open('config.json', 'r', encoding='utf-8') as arquivo:
+                dados = json.load(arquivo)
+                entrada = dados['entrada']
+                saida = dados['saida']
+
+def salvar():
+    global entrada, saida
+
+    with open(config_path, 'w', encoding='utf-8') as arquivo:
+        json.dump({'entrada': entrada, 'saida': saida}, arquivo, ensure_ascii=False, indent=4)
 
 class Funcoes:
 
@@ -24,10 +41,11 @@ class Funcoes:
         elif file == 'S':
             saida = filedialog.askdirectory()
             print(saida)
+        
+        salvar()
     
     def deletar():
         global saida
-
 
         for arquivo in os.listdir(saida):
             if 'json' in arquivo:
@@ -47,6 +65,7 @@ class Funcoes:
 
 class Janela(Funcoes):
     def __init__(self):
+        carregar()
         self.tela()
         self.botoes()
         window.mainloop()
