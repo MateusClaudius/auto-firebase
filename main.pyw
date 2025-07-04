@@ -26,6 +26,13 @@ class Funcoes:
             saida = filedialog.askdirectory()
             print(saida)
     
+    def deletar():
+        global saida
+
+        for arquivo in os.listdir(saida):
+            caminho_completo = os.path.join(saida, arquivo)
+            os.remove(caminho_completo)
+    
     def converter():
        global entrada
        global saida
@@ -68,5 +75,8 @@ class Janela(Funcoes):
 
         self.fechar = Button(window, text='Fechar programa', command=Funcoes.finalizar, bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))
         self.fechar.place(relx=0.24, rely=0.6)
+
+        self.deletar = Button(window, text='Deletar arquivos', command=Funcoes.deletar, bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))
+        self.deletar.place(relx=0.43, rely=0.6)
 
 Janela()
