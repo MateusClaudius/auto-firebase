@@ -28,14 +28,11 @@ class Funcoes:
     def deletar():
         global saida
 
-        try:
 
-            for arquivo in os.listdir(saida):
-                if 'json' in arquivo:
-                    caminho_completo = os.path.join(saida, arquivo)
-                    os.remove(caminho_completo)
-        except FileNotFoundError:
-            pass
+        for arquivo in os.listdir(saida):
+            if 'json' in arquivo:
+                caminho_completo = os.path.join(saida, arquivo)
+                os.remove(caminho_completo)
     
     def converter():
        global entrada, saida
