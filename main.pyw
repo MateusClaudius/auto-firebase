@@ -5,18 +5,21 @@ from tkinter import filedialog
 
 window = Tk()
 entrada = saida = ''
+txt_entrada = StringVar()
+txt_saida = StringVar()
 config_path = 'config.json'
 
 cores = {
     'cinza': '#1e1e1e',
-    'laranja': '#ffa000'
+    'laranja': '#ffa000',
+    'branco': "#c0c0c0"
     }
 
-def carregar():
+def carregar_path():
         global entrada, saida
 
         if os.path.exists(config_path):
-            with open('config.json', 'r', encoding='utf-8') as arquivo:
+            with open(config_path, 'r', encoding='utf-8') as arquivo:
                 dados = json.load(arquivo)
                 entrada = dados['entrada']
                 saida = dados['saida']
@@ -26,6 +29,13 @@ def salvar():
 
     with open(config_path, 'w', encoding='utf-8') as arquivo:
         json.dump({'entrada': entrada, 'saida': saida}, arquivo, ensure_ascii=False, indent=4)
+
+def carregar_labels():
+        if os.path.exists(config_path):
+            with open(config_path, 'r', encoding='utf-8') as arquivo:
+                dados = json.load(arquivo)
+                txt_entrada.set(dados['entrada'])
+                txt_saida.set(dados['saida'])
 
 class Funcoes:
 
@@ -43,6 +53,7 @@ class Funcoes:
             print(saida)
         
         salvar()
+        carregar_labels()
     
     def apagar():
         global saida
@@ -69,7 +80,8 @@ class Funcoes:
 
 class Janela(Funcoes):
     def __init__(self):
-        carregar()
+        carregar_path()
+        carregar_labels()
         self.tela()
         self.botoes()
         window.mainloop()
@@ -81,25 +93,31 @@ class Janela(Funcoes):
         window.resizable(False, False)
     
     def botoes(self):
-        self.label = Label(window, text='Selecione a pasta onde os arquivos .json estão:', bg=cores['cinza'], fg='white', font=('Arial', 11, 'bold'))
+        self.label = Label(window, text='Selecione a pasta onde os arquivos .json estão:', bg=cores['cinza'], fg='white', font=('Arial', 11, 'bold'))#Label de seleção da pasta de entrada
         self.label.place(relx=0.05, rely=0.20)
 
-        self.selecionar_1 = Button(window, text='Selecionar Pasta', command=lambda: Funcoes.caminho(file='E'), bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))
+        self.label = Label(window, textvariable=txt_entrada, bg=cores['cinza'], fg=cores['branco'], font=('Arial', 9))#Label que irá mostrar o caminho da pasta de entrada
+        self.label.place(relx=0.05, rely=0.28)
+
+        self.selecionar_1 = Button(window, text='Selecionar Pasta', command=lambda: Funcoes.caminho(file='E'), bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))#Botão para delecionar pasta de entrada
         self.selecionar_1.place(relx=0.75, rely=0.18)
 
-        self.label = Label(window, text='Selecione a pasta onde os arquivos .json estarão após a conversão:', bg=cores['cinza'], fg='white', font=('Arial', 11, 'bold'))
+        self.label = Label(window, text='Selecione a pasta onde os arquivos .json estarão após a conversão:', bg=cores['cinza'], fg='white', font=('Arial', 11, 'bold'))#Label de seleção da pasta de saída
         self.label.place(relx=0.05, rely=0.42)
 
-        self.selecionar_2 = Button(window, text='Selecionar Pasta', command=lambda: Funcoes.caminho(file='S'), bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))
+        self.label = Label(window, textvariable=txt_saida, bg=cores['cinza'], fg=cores['branco'], font=('Arial', 9))#Label que irá mostrar o caminho da pasta de saída
+        self.label.place(relx=0.05, rely=0.50)
+
+        self.selecionar_2 = Button(window, text='Selecionar Pasta', command=lambda: Funcoes.caminho(file='S'), bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))#Botão para delecionar pasta de saída
         self.selecionar_2.place(relx=0.75, rely=0.4)
 
-        self.iniciar = Button(window, text='Iniciar conversão', command=Funcoes.converter, bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))
-        self.iniciar.place(relx=0.05, rely=0.6)
+        self.iniciar = Button(window, text='Iniciar conversão', command=Funcoes.converter, bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))#Botão de iniciar conversão
+        self.iniciar.place(relx=0.05, rely=0.7)
 
-        self.deletar = Button(window, text='Deletar arquivos', command=Funcoes.apagar, bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))
-        self.deletar.place(relx=0.24, rely=0.6)
+        self.deletar = Button(window, text='Deletar arquivos', command=Funcoes.apagar, bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))#Botão que apaga todos os arquivos .json da pasta saída
+        self.deletar.place(relx=0.24, rely=0.7)
 
-        self.fechar = Button(window, text='Fechar programa', command=Funcoes.finalizar, bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))
-        self.fechar.place(relx=0.423, rely=0.6)
+        self.fechar = Button(window, text='Fechar programa', command=Funcoes.finalizar, bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))#Botão que fecha a automação
+        self.fechar.place(relx=0.423, rely=0.7)
 
 Janela()
