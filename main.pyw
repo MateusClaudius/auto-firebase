@@ -27,8 +27,9 @@ def carregar_path():
 def salvar():
     global entrada, saida
 
-    with open(config_path, 'w', encoding='utf-8') as arquivo:
-        json.dump({'entrada': entrada, 'saida': saida}, arquivo, ensure_ascii=False, indent=4)
+    if entrada != "" and saida != "":
+        with open(config_path, 'w', encoding='utf-8') as arquivo:
+            json.dump({'entrada': entrada, 'saida': saida}, arquivo, ensure_ascii=False, indent=4)
 
 def carregar_labels():
         if os.path.exists(config_path):
@@ -53,6 +54,7 @@ class Funcoes:
             print(saida)
         
         salvar()
+        carregar_path()
         carregar_labels()
     
     def apagar():
