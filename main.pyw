@@ -7,6 +7,7 @@ window = Tk()
 entrada = saida = ''
 txt_entrada = StringVar()
 txt_saida = StringVar()
+msg_terminal = StringVar()
 config_path = 'config.json'
 
 cores = {
@@ -44,6 +45,7 @@ class Funcoes:
         exit()
     
     def caminho(file):
+        msg_terminal.set('')
         global entrada, saida
 
         if file == 'E':
@@ -61,7 +63,8 @@ class Funcoes:
         global saida
 
         os.startfile(saida)
-        window.destroy()
+        #window.destroy()
+        msg_terminal.set('Arquivos deletados com sucesso!')
 
         print(saida)
         for arquivo in os.listdir(saida):
@@ -73,7 +76,8 @@ class Funcoes:
        global entrada, saida
 
        os.startfile(saida)
-       window.destroy()
+       #window.destroy()
+       msg_terminal.set('Conversão realizada com sucesso!')
 
        print(entrada, saida)
        for arquivo in os.listdir(entrada):
@@ -121,5 +125,8 @@ class Janela(Funcoes):
 
         self.fechar = Button(window, text='Fechar programa', command=Funcoes.finalizar, bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))#Botão que fecha a automação
         self.fechar.place(relx=0.423, rely=0.7)
+
+        self.label = Label(window, textvariable=msg_terminal, bg=cores['cinza'], fg='green', font=('Arial', 11, 'bold'))#Label que exibe o resultado da operação
+        self.label.place(relx=0.626, rely=0.72)
 
 Janela()
