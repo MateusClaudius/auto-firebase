@@ -73,6 +73,7 @@ class Funcoes:
                 os.remove(caminho_completo)
     
     def converter():
+       carregar_path()
        global entrada, saida
 
        os.startfile(saida)
