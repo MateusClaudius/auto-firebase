@@ -56,8 +56,8 @@ class Funcoes:
             print(saida)
         
         salvar()
-        carregar_path()
         carregar_labels()
+        #carregar_path()
     
     def apagar():
         global saida
