@@ -33,11 +33,14 @@ def salvar():
             json.dump({'entrada': entrada, 'saida': saida}, arquivo, ensure_ascii=False, indent=4)
 
 def carregar_labels():
+        
         if os.path.exists(config_path):
             with open(config_path, 'r', encoding='utf-8') as arquivo:
                 dados = json.load(arquivo)
                 txt_entrada.set(dados['entrada'])
                 txt_saida.set(dados['saida'])
+
+        carregar_path()
 
 class Funcoes:
 
@@ -57,13 +60,11 @@ class Funcoes:
         
         salvar()
         carregar_labels()
-        #carregar_path()
     
     def apagar():
         global saida
 
         os.startfile(saida)
-        #window.destroy()
         msg_terminal.set('Arquivos deletados com sucesso!')
 
         print(saida)
@@ -77,7 +78,6 @@ class Funcoes:
        global entrada, saida
 
        os.startfile(saida)
-       #window.destroy()
        msg_terminal.set('Conversão realizada com sucesso!')
 
        print(entrada, saida)
