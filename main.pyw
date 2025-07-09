@@ -96,7 +96,7 @@ class Janela(Funcoes):
     def tela(self):
         window.title('Automação FireBase')
         window.configure(background=cores['cinza'])
-        window.geometry('720x252')
+        window.geometry('720x352')
         window.resizable(False, False)
     
     def botoes(self):
