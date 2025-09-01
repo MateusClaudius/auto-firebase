@@ -100,23 +100,23 @@ class Janela(Funcoes):
         window.resizable(False, False)
     
     def botoes(self):
-        self.label = Label(window, text='Selecione a pasta onde os arquivos .json estão:', bg=cores['cinza'], fg='white', font=('Arial', 11, 'bold'))#Label de seleção da pasta de entrada
-        self.label.place(relx=0.05, rely=0.20)
+        self.label_entrada = Label(window, text='Selecione a pasta onde os arquivos .json estão:', bg=cores['cinza'], fg='white', font=('Arial', 11, 'bold'))#Label de seleção da pasta de entrada
+        self.label_entrada.place(relx=0.05, rely=0.20)
 
-        self.label = Label(window, textvariable=txt_entrada, bg=cores['cinza'], fg=cores['branco'], font=('Arial', 9))#Label que irá mostrar o caminho da pasta de entrada
-        self.label.place(relx=0.05, rely=0.28)
+        self.label_caminho_entrada = Label(window, textvariable=txt_entrada, bg=cores['cinza'], fg=cores['branco'], font=('Arial', 9))#Label que irá mostrar o caminho da pasta de entrada
+        self.label_caminho_entrada.place(relx=0.05, rely=0.28)
 
-        self.selecionar_1 = Button(window, text='Selecionar pasta', command=lambda: Funcoes.caminho(file='E'), bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))#Botão para delecionar pasta de entrada
-        self.selecionar_1.place(relx=0.75, rely=0.18)
+        self.selecionar_entarda = Button(window, text='Selecionar pasta', command=lambda: Funcoes.caminho(file='E'), bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))#Botão para delecionar pasta de entrada
+        self.selecionar_entarda.place(relx=0.75, rely=0.18)
 
-        self.label = Label(window, text='Selecione a pasta onde os arquivos .json estarão após a conversão:', bg=cores['cinza'], fg='white', font=('Arial', 11, 'bold'))#Label de seleção da pasta de saída
-        self.label.place(relx=0.05, rely=0.42)
+        self.label_saida = Label(window, text='Selecione a pasta onde os arquivos .json estarão após a conversão:', bg=cores['cinza'], fg='white', font=('Arial', 11, 'bold'))#Label de seleção da pasta de saída
+        self.label_saida.place(relx=0.05, rely=0.42)
 
-        self.label = Label(window, textvariable=txt_saida, bg=cores['cinza'], fg=cores['branco'], font=('Arial', 9))#Label que irá mostrar o caminho da pasta de saída
-        self.label.place(relx=0.05, rely=0.50)
+        self.label_caminho_saida = Label(window, textvariable=txt_saida, bg=cores['cinza'], fg=cores['branco'], font=('Arial', 9))#Label que irá mostrar o caminho da pasta de saída
+        self.label_caminho_saida.place(relx=0.05, rely=0.50)
 
-        self.selecionar_2 = Button(window, text='Selecionar pasta', command=lambda: Funcoes.caminho(file='S'), bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))#Botão para delecionar pasta de saída
-        self.selecionar_2.place(relx=0.75, rely=0.4)
+        self.selecionar_saida = Button(window, text='Selecionar pasta', command=lambda: Funcoes.caminho(file='S'), bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))#Botão para delecionar pasta de saída
+        self.selecionar_saida.place(relx=0.75, rely=0.4)
 
         self.iniciar = Button(window, text='Iniciar conversão', command=Funcoes.converter, bd=4, bg=cores['laranja'], font=('Arial', 10, 'bold'))#Botão de iniciar conversão
         self.iniciar.place(relx=0.05, rely=0.7)
